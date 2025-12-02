@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "model-context-protocol"
+title:  "Model Context Protocol"
 date:   2025-12-02 14:34:15 -0600
 categories: AI
 published: true
