@@ -32,7 +32,7 @@ myfirstproject
 For example, I used the following code to create a project `.venv`
 
 ```bash
-cd C:\Users\49280549\Box\SSRN\MCP\code
+cd C:\Users\janetan\Box\SSRN\MCP\code
 python -m venv .venv
 .venv\Scripts\activate
 ```
@@ -62,7 +62,7 @@ For example, I used the following command to activate my virtual project and exe
 ```bash
 .venv\Scripts\activate
 
-(.venv) PS C:\Users\49280549\Box\SSRN\MCP\code> python ssrn_search_tool.py
+(.venv) PS C:\Users\janetan\Box\SSRN\MCP\code> python ssrn_search_tool.py
 ```
 
 # Deactivate Virtual Environment
