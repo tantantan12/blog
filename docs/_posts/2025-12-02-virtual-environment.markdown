@@ -37,11 +37,13 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
-> Why do I use `.venv` for my virtual environment?
+Why do I use `.venv` for my virtual environment?
 - Standard practice - Most Python developers use .venv by default
 - Hidden by default - The leading dot makes it hidden on Unix-like systems, keeping your project directory cleaner
 - Easy to gitignore - It's typically added to .gitignore so the entire virtual environment folder isn't committed to version control
 - Tool recognition - Many Python tools automatically recognize and use .venv without additional configuration
+
+
 # Activate Virtual Environment
 To use the virtual environment, you have to activate it with this command:
 
