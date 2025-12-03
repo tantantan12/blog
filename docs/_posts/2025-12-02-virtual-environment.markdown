@@ -74,7 +74,7 @@ For example, I used the following command to activate my virtual project and exe
 
 ```
 
-Source: [source][source]. 
+Source: [w3schools][source]. 
 
 [source]: https://www.w3schools.com/python/python_virtualenv.asp
 
