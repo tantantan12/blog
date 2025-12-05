@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Model Context Protocol"
+title:  "Introduction to Model Context Protocol (Part I)"
 date:   2025-12-02 14:34:15 -0600
 categories: AI
 published: true
@@ -39,10 +39,10 @@ Transports in MCP implement the protocol’s communication layer. At the most ba
 
 ## The MCP Lifecycle
 
-This lifecycle governs how each of the MCP components handle creating, using, and closing a connection which is underscored by the names of the major phases of the connection lifecycle:
+This lifecycle governs how each of the MCP components handle creating, using, and closing a connection:
 
 - Initialization: The client and server exchange messages to establish which protocol versions they’re compatible with, to share and negotiate supported capabilities, and to share any implementation details that may be relevant to the connection.
 
-- Operation: This is the main “loop” where everything happens. Based on the negotiated capabilities from the initialization phase, the client sends a request to the server, and the server replies with a response, which could include the results of the requested operation or an error if there was a failure.
+- Operation: Based on the negotiated capabilities from the initialization phase, the client sends a request to the server, and the server replies with a response, which could include the results of the requested operation or an error if there was a failure.
 
-- Shutdown: During this phase, the client terminates the protocol connection, with the transport layer being responsible for communicating this termination to the server.
+- Shutdown: The client terminates the protocol connection, with the transport layer being responsible for communicating this termination to the server.
