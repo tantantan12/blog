@@ -35,3 +35,14 @@ Prompts are the language model prompts that can be used by the host application 
 
 ## The MCP Transport
 
+Transports in MCP implement the protocol’s communication layer. At the most basic level, they are responsible for sending and receiving messages between the client and server. MCP SDKs come with two default transports: stdio for local connections and Streamable HTTP for remote connections. While these are the most commonly used, the protocol allows for the implementation of custom transports as well, which can support use cases for which the default transports are less well-suited, as long as the underlying communication channel being used allows for bidirectional message passing. Transports may be stateless (as in the case of the stdio transport) or optionally stateful (as in the case of the Streamable HTTP transport). For stateful transports, the transport is responsible for maintaining a session between the client and server and may support things like resuming after a network interruption, or supporting multiple clients connecting to the same server. All transports must manage the entire connection lifecycle.
+
+## The MCP Lifecycle
+
+This lifecycle governs how each of the MCP components handle creating, using, and closing a connection which is underscored by the names of the major phases of the connection lifecycle:
+
+- Initialization: The client and server exchange messages to establish which protocol versions they’re compatible with, to share and negotiate supported capabilities, and to share any implementation details that may be relevant to the connection.
+
+- Operation: This is the main “loop” where everything happens. Based on the negotiated capabilities from the initialization phase, the client sends a request to the server, and the server replies with a response, which could include the results of the requested operation or an error if there was a failure.
+
+- Shutdown: During this phase, the client terminates the protocol connection, with the transport layer being responsible for communicating this termination to the server.
