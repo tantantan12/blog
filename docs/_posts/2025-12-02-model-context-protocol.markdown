@@ -1,10 +1,23 @@
 ---
 layout: post
-title:  "Introduction to Model Context Protocol (Part I)"
+title:  "Introduction to MCP (Part I)"
 date:   2025-12-02 14:34:15 -0600
 categories: AI
 published: true
 ---
+
+<!-- MathJax configuration -->
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+
+<!-- MathJax CDN -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+
 You've probably heard about Model Context Protocol (MCP) on different occasions. What is MCP? 
 
 # What is MCP?
