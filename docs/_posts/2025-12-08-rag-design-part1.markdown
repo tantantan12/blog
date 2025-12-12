@@ -61,7 +61,7 @@ These four groups are for Study I:
 From user behavior data, we find that keywords significantly reduce people's likelihood to revise their answers to the second question. Further, people tend to spend longer time in gnerating their answers when keywords are provided for Task 2 but not for Task 1.  
 
 
-
+### Table: Basic Behavior
 | Variable | revise1 | revise2 | Task 1→2 Duration | Task 2→3 Duration |
 |:---------|:--------:|:--------:|:------------------:|:-------------------:|
 | Keywords | 0.0423 (0.0524) | -0.1262* (0.0630) | 0.1267 (0.1018) | 0.4519* (0.2096) |
@@ -81,7 +81,7 @@ mygenAIfolder\Code\survey\conversation_prompts_sep5.csv
 -->
 ### Prompting Behavior
 We further analzyed users' prompting behavior and found that there is no significant differences among groups.
-
+### Table: Prompting Behavior
 | Variable | Log(num_prompts) | Log(avg_prompt_words) |
 |:---------|:--------:|:--------:|
 | Prompt Treatment | -0.0129 (0.0881) | 0.0126 (0.0684) |
@@ -107,7 +107,7 @@ In this analysis, we examine whether users' prompts are highly similar to the in
 
  
 
-## Table: Treatment Effects on Prompt Alignment and Vocabulary Diversity
+## Table: Prompt Alignment and Vocabulary Diversity
 
 | Variable | Max Similarity Task 1 | Max Similarity Task 2 | Avg Word Entropy Task 1 | Avg Word Entropy Task 2 |
 |---|---|---|---|---|
@@ -127,6 +127,7 @@ In this analysis, we examine whether users' prompts are highly similar to the in
 
 We also find that users presented with the prompt tool have a higher chance 
 
+### Table: Task 1 Evaluation
 | Variable | Num Unique Papers | NDCG (Binary) |
 |:---------|:--------:|:--------:|
 | Prompt Treatment | 1.0899† (0.6294) | -0.0238 (0.0388) |
@@ -145,7 +146,7 @@ Relevance recoded as binary (2=relevant, 1,0=not relevant)
 
  
 
-## Table: Effect of AI-Powered Search Interface on Speech Quality Dimensions
+## Table: Task 2 Evaluation
 
 | Variable | Novelty | Relevance | Salience |
 |----------|---------|-----------|----------|
