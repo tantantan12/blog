@@ -7,7 +7,7 @@ categories: hci
 
 ## Motivation
 
-When you use an AI system for research assistance, you may find it difficult to come up with a good prompt due to a lack of knowledge in this topic. You may not be able to evaluate the response from the AI system and have a hard time deciding whether you should terminate the conversation or continue exploring. In this article, I would like to report to you a study conducted by my co-authors ([Amit Basu][Amit] and [Jingjing Zhang][jingjing]) and me, which explored users' behavior changes when interacting with an AI system equipped with recommended keywords and prompts.
+When you use an AI system for research assistance, you may find it difficult to come up with a good prompt due to a lack of knowledge in this topic. You may not be able to evaluate the response from the AI system and have a hard time deciding whether you should terminate the conversation or continue exploring. In this article, I would like to report to you a study conducted by my co-authors ([Amit Basu][Amit] and [Jingjing Zhang][Jingjing]) and me, which explored users' behavior changes when interacting with an AI system equipped with recommended keywords and prompts.
 
 ## Study Design
 
@@ -278,6 +278,6 @@ Please answer the following questions to help us better understand the search to
 
 Links:
 [Amit]:https://www.smu.edu/cox/academics/faculty/amit-basu
-[jingjing]:https://kelley.iu.edu/faculty-research/faculty-directory/profile.html?id=JJZHANG
+[Jingjing]:https://kelley.iu.edu/faculty-research/faculty-directory/profile.html?id=JJZHANG
 
 
