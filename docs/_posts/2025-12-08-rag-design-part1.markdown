@@ -26,10 +26,10 @@ The readme.md in the folder of Study II - Prolific - Search SSRN included all th
 
 
 We recruited subjects from Prolific. The subjects are required to come from an English-speaking country and have a master's degree.
-- Prompt + Keywords (56 subjects)
-- Prompt (41 subjects)
-- Keywords (40 subjects)
-- Control (40 subjects)
+- Prompt + Keywords (57 subjects)
+- Prompt (45 subjects)
+- Keywords (45 subjects)
+- Control (42 subjects)
 
 Note: We removed subjects whose total duration is below 5 minutes.
 
@@ -57,45 +57,117 @@ These four groups are for Study I:
 - Control
 
 -->
-### User Behavior
-From user behavior data, we find that keywords significantly reduce people's likelihood to revise their answers to the second question. Further, people tend to spend longer time in gnerating their answers when keywords are provided. This holds for both Information Tasks 1 and 2.
+### Task Completion Behavior
+From user behavior data, we find that keywords significantly reduce people's likelihood to revise their answers to the second question. Further, people tend to spend longer time in gnerating their answers when keywords are provided for Task 2 but not for Task 1.  
 
 
 
 | Variable | revise1 | revise2 | Task 1→2 Duration | Task 2→3 Duration |
 |:---------|:--------:|:--------:|:------------------:|:-------------------:|
-| Keywords | 0.0477 (0.0551) | -0.1402* (0.0661) | 0.2116* (0.1023) | 0.4614* (0.2194) |
-| Prompt | -0.0726 (0.0553) | 0.0500 (0.0663) | 0.0696 (0.1027) | 0.1286 (0.2201) |
-| Privacy Knowledge (q1) | -0.0126 (0.0278) | 0.0795* (0.0334) | -0.0401 (0.0517) | -0.0915 (0.1108) |
-| AI Usage Frequency (q12) | 0.0015 (0.0253) | -0.0028 (0.0303) | -0.0208 (0.0469) | 0.1593 (0.1006) |
-| R² | 0.0159 | 0.0615 | 0.0345 | 0.0379 |
-| Adj R² | -0.0070 | 0.0397 | 0.0121 | 0.0155 |
-| N | 177 | 177 | 177 | 177 |
+| Keywords | 0.0423 (0.0524) | -0.1262* (0.0630) | 0.1267 (0.1018) | 0.4519* (0.2096) |
+| Prompt | -0.0826 (0.0525) | 0.0466 (0.0630) | 0.0674 (0.1019) | 0.1365 (0.2097) |
+| Privacy Knowledge (q1) | -0.0159 (0.0267) | 0.0794* (0.0320) | -0.0516 (0.0518) | -0.0598 (0.1066) |
+| AI Usage Frequency (q12) | -0.0011 (0.0240) | -0.0090 (0.0288) | -0.0112 (0.0466) | 0.1806 (0.0959) |
+| R² | 0.0195 | 0.0565 | 0.0187 | 0.0402 |
+| Adj R² | -0.0018 | 0.0360 | -0.0026 | 0.0193 |
+| N | 189 | 189 | 189 | 189 |
 
 **Note:** Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.10
 
 Task 1→2 Duration and Task 2→3 Duration are log-transformed.
 
 <!--
-conversation_prompts_sep5.csv
+mygenAIfolder\Code\survey\conversation_prompts_sep5.csv
 -->
+### Prompting Behavior
+We further analzyed users' prompting behavior and found that there is no significant differences among groups.
 
-We further analzyed users' prompting behavior and found that recommended prompt will decrease the number of words in users' prompt.
- 
-| Variable | num_prompts | avg_prompt_words | paper_references |
-|:---------|:--------:|:--------:|:--------:|
-| Prompt Treatment | -0.0607 (0.7629) | -1.3798† (0.7629) | 1.7089 (1.9010) |
-| Keywords Treatment | -0.0631 (0.7602) | -0.3010 (0.7603) | 0.1485 (1.8943) |
-| Privacy Knowledge (q1) | -1.0391** (0.3876) | 0.0472 (0.3876) | -2.3488* (0.9659) |
-| AI Usage Freq. (q12) | -0.0352 (0.3474) | 1.7154*** (0.3475) | 0.2418 (0.8657) |
-| R-squared | 0.0449 | 0.1554 | 0.0425 |
-| Adj R-squared | 0.0225 | 0.1355 | 0.0200 |
-| N | 175 | 175 | 175 |
+| Variable | Log(num_prompts) | Log(avg_prompt_words) |
+|:---------|:--------:|:--------:|
+| Prompt Treatment | -0.0129 (0.0881) | 0.0126 (0.0684) |
+| Keywords Treatment | -0.0403 (0.0880) | -0.0328 (0.0683) |
+| Privacy Knowledge (q1) | -0.0796† (0.0451) | 0.0116 (0.0350) |
+| AI Usage Freq. (q12) | -0.0325 (0.0401) | 0.1509*** (0.0312) |
+| R-squared | 0.0288 | 0.1370 |
+| Adj R-squared | 0.0075 | 0.1180 |
+| N | 187 | 187 |
 
 **Note:** Standard errors in parentheses. *** p<0.001, ** p<0.01, * p<0.05, † p<0.10
 
 Reference category: Group 4 (Control group)
-## Appendis
+<!--
+MyGenAIfolder\Responses\Alex_Information_Task1
+
+Now in analysis.
+-->
+
+### Deligation
+
+In this analysis, we examine whether users' prompts are highly similar to the information task. This helps us to assess to what extant users delegate the problem to AI.
+
+ 
+
+## Table: Treatment Effects on Prompt Alignment and Vocabulary Diversity
+
+| Variable | Max Similarity Task 1 | Max Similarity Task 2 | Avg Word Entropy Task 1 | Avg Word Entropy Task 2 |
+|---|---|---|---|---|
+| Prompt Treatment | -0.0172<br/>(0.0198) | -0.0580†<br/>(0.0349) | 0.0095<br/>(0.0736) | 0.1050<br/>(0.1111) |
+| Keywords Treatment | -0.0361†<br/>(0.0200) | -0.0362<br/>(0.0344) | -0.0312<br/>(0.0743) | -0.1038<br/>(0.1095) |
+| Privacy Knowledge | 0.0164<br/>(0.0105) | 0.0020<br/>(0.0182) | -0.0336<br/>(0.0390) | 0.0242<br/>(0.0578) |
+| AI Usage Experience | 0.0150†<br/>(0.0089) | 0.0495**<br/>(0.0162) | 0.1406***<br/>(0.0331) | 0.1052*<br/>(0.0515) |
+| Number of Prompts | 0.0001<br/>(0.0020) | -0.0088*<br/>(0.0034) | -0.0133†<br/>(0.0075) | -0.0071<br/>(0.0109) |
+| N | 159 | 151 | 159 | 151 |
+| R² | 0.0791 | 0.1324 | 0.1316 | 0.0551 |
+
+**Note:** Threshold >=8 minutes.
+
+**Note:** † p < 0.10, * p < 0.05, ** p < 0.01, *** p < 0.001. Values in parentheses are standard errors. Controls include privacy knowledge (q1_numeric), AI usage experience (q12_numeric), and number of prompts submitted (num_prompts). Prompt: Groups 1-2. Keywords: Groups 1,3. Control: Group 4.
+
+### Task 1 - Information Retrieval Quality Metrics
+
+We also find that users presented with the prompt tool have a higher chance 
+
+| Variable | Num Unique Papers | NDCG (Binary) |
+|:---------|:--------:|:--------:|
+| Prompt Treatment | 1.0899† (0.6294) | -0.0238 (0.0388) |
+| Keywords Treatment | -0.0065 (0.6286) | -0.0374 (0.0387) |
+| Privacy Knowledge (q1) | -0.0498 (0.3206) | -0.0105 (0.0198) |
+| AI Usage Freq. (q12) | -0.9264** (0.2878) | -0.0454* (0.0177) |
+| R-squared | 0.0774 | 0.0494 |
+| N | 186 | 186 |
+
+**Note:** Standard errors in parentheses. *** p<0.001, ** p<0.01, * p<0.05, † p<0.10
+
+Relevance recoded as binary (2=relevant, 1,0=not relevant)
+
+
+### Task 2 - Speech Quality
+
+ 
+
+## Table: Effect of AI-Powered Search Interface on Speech Quality Dimensions
+
+| Variable | Novelty | Relevance | Salience |
+|----------|---------|-----------|----------|
+| Prompt Treatment | 0.2431* | 0.1778† | 0.1431 |
+| | (0.1003) | (0.1076) | (0.1076) |
+| Keywords Treatment | -0.0283 | -0.0051 | -0.0439 |
+| | (0.1002) | (0.1075) | (0.1075) |
+| Privacy Knowledge | -0.0494 | -0.0368 | -0.0593 |
+| | (0.0510) | (0.0547) | (0.0547) |
+| AI Experience | 0.0915* | 0.0872† | 0.0735 |
+| | (0.0459) | (0.0492) | (0.0492) |
+| **N** | 189 | 189 | 189 |
+
+**Note:** Significance levels: ***p<0.001, **p<0.01, *p<0.05, †p<0.10
+
+**Outcomes:**
+- **Novelty:** How original and innovative are the ideas presented (1-5 scale)
+- **Relevance:** How well does the speech address privacy legislations topic (1-5 scale)
+- **Salience:** How important and timely are the issues discussed (1-5 scale)
+
+
+## Appendix
 ### Information Task Evaluation Questions
 
 Please answer the following questions to help us better understand the two information tasks.
