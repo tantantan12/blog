@@ -130,6 +130,7 @@ In this analysis, we examine whether users' prompts are highly similar to the in
 We also find that users presented with the prompt tool have a higher chance 
 
 ### Table: Task 1 Evaluation
+
 | Variable | Num Unique Papers | NDCG (Binary) |
 |:---------|:--------:|:--------:|
 | Prompt Treatment | 1.0899† (0.6294) | -0.0238 (0.0388) |
