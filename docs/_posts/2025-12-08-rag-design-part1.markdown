@@ -275,6 +275,6 @@ Please answer the following questions to help us better understand the search to
 
 Links:
 [Amit]:https://www.smu.edu/cox/academics/faculty/amit-basu
-[Jingjing]:https://kelley.iu.edu/faculty-research/faculty-directory/profile.html?id=JJZHANG
+[jingjing]:https://kelley.iu.edu/faculty-research/faculty-directory/profile.html?id=JJZHANG
 
 
