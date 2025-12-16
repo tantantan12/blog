@@ -54,7 +54,7 @@ The recommended prompts feature is designed to extend the conversation and broad
 
 The three clickable recommended prompts generated from the LLM's response appear beneath the original response. When a user clicks on one of these prompts, it becomes the next prompt in the conversation, effectively extending the dialogue. In the system-generated prompt, we specify that the recommended prompts should be concise (generally less than eight words), should vary in content to ensure diversity, should differ from the user's original query, and should be framed as either imperative sentences or questions. This design encourages continued engagement and greatly reduces the cognitive load of generating a search strategy.
 
-![alt text](2025-12-08-rag-design-part1/studyI-interface.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-08-rag-design-part1/studyI-interface.png)
 
 
 ### Participant Recruitment and Group Assignment
