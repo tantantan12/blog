@@ -29,13 +29,53 @@ The readme.md in the folder of Study II - Prolific - Search SSRN included all th
 -->
 
 
-We recruited subjects from Prolific. The subjects are required to come from an English-speaking country and have a master's degree.
-- Prompt + Keywords (57 subjects)
-- Prompt (45 subjects)
-- Keywords (45 subjects)
-- Control (42 subjects)
 
-Note: We removed subjects whose total duration is below 5 minutes.
+### Data Collection for Building the RAG Tool
+
+To investigate the impacts of dynamic recommendations in RAG systems, we developed ChatSSRN, an RAG system designed for academic literature search. The basic version of ChatSSRN, without dynamic recommendations, is publicly accessible at [chatssrn.com](http://chatssrn.com/). 
+
+The exponential growth of academic publications presents a significant challenge for researchers. In 2022 alone, over 5.1 million academic research papers were published. Even within a specific domain, the annual output can reach hundreds of thousands of papers. Researchers often struggle with two key aspects of literature search: (1) formulating effective keywords for search prompts and (2) developing effective search strategies to navigate the vast information landscape. While various machine learning tools have been developed to assist scholarly paper search, including specialized LLMs like Meta's Galactica, these solutions often come with high computational costs. We focused on RAG as a solution because it leverages pre-trained language models while incorporating domain-specific knowledge efficiently.
+
+ChatSSRN is built upon the RAG-Token model following the framework of fastRAG. We gathered the metadata and abstracts of 1,214,426 papers from SSRN as our corpus. For document embedding, we utilize the IPEX Sentence Transformers Document Embedder to generate vector representations of abstracts, which are then stored in a vector database (Qdrant). We employ the IPEX Sentence Transformers Text Embedder to generate vector embeddings for queries, which are subsequently used to re-rank documents within the retrieval pipeline. We use the BGE-Small-V1.5 model from the BGE (BAAI General Embeddings) family of embedding models, which have been integrated into major RAG frameworks such as Langchain and LLamaIndex. After retrieving the top 10 most similar papers for a query, we construct a prompt containing the abstracts of these papers, the user's query, and an instruction. This prompt is then sent to GPT-3.5 for free-text response generation.
+
+### Construction of Recommended Keywords and Prompts
+
+ChatSSRN incorporates two dynamic recommendation features to enhance user experience and improve information discovery.
+
+#### Recommended Keywords
+
+The recommended keywords feature allows information retrieval beyond the top-k documents and offers a keyword-level summary of related content. The process begins with constructing a keyword network based on the co-occurrence of keywords in all articles. We follow standard natural language processing procedures to lemmatize the keywords and generate bigrams based on co-occurrence. We then construct an undirected network where each node represents a keyword, and relationships between keywords are derived from co-occurrence, with edge weights determined by the number of co-occurrences.
+
+To refine the network, we calculate the degree centrality (normalized) for each node and generate a subnetwork with nodes whose degree centralities are greater than 0.01. To derive related keywords for each document, we combine related keywords for every keyword within that document by retrieving neighbors of each keyword that are not already keywords of the document. These retrieved keywords are then ranked based on degree centrality, and the top 5 related keywords are selected. This process ensures that recommended keywords are both relevant to the document and central to the broader network of academic literature.
+
+#### Recommended Prompts
+
+The recommended prompts feature is designed to extend the conversation and broaden the scope of information discovery. These prompts are generated subsequent to the system's initial response to the user's query. We craft a system-generated prompt (invisible to the user) that is sent to the LLM, incorporating abstracts relevant to the user's query that were not utilized in the initial response. The LLM is instructed to summarize these additional abstracts and provide suggested follow-up prompts for the user.
+
+The three clickable recommended prompts generated from the LLM's response appear beneath the original response. When a user clicks on one of these prompts, it becomes the next prompt in the conversation, effectively extending the dialogue. In the system-generated prompt, we specify that the recommended prompts should be concise (generally less than eight words), should vary in content to ensure diversity, should differ from the user's original query, and should be framed as either imperative sentences or questions. This design encourages continued engagement and greatly reduces the cognitive load of generating a search strategy.
+
+![alt text](2025-12-08-rag-design-part1/studyI-interface.png)
+
+
+### Participant Recruitment and Group Assignment
+
+We recruited subjects from Prolific, an online platform for research studies. The subjects were required to meet the following criteria:
+- Come from an English-speaking country
+- Possess a master's degree
+
+We randomly assigned 189 participants (after excluding those with session duration below 7 minutes) to four experimental groups in a between-subjects design:
+
+#### Group Definitions
+
+1. **Prompt + Keywords (57 subjects):** Subjects in this group had access to both recommended prompts and recommended keywords throughout the study. During the tutorial, they were shown how to use both features, and both features appeared alongside the AI tool during task completion.
+
+2. **Prompt Only (45 subjects):** Subjects in this group had access only to recommended prompts. The tutorial and interface highlighted how to use the suggested prompts, but no keyword suggestions were provided. During task completion, only prompts appeared with the AI tool.
+
+3. **Keywords Only (45 subjects):** Subjects in this group had access only to recommended keywords. The tutorial focused on keyword usage, and only keyword suggestions appeared alongside the AI tool during task completion. No prompt recommendations were shown.
+
+4. **Control (42 subjects):** Subjects in this group received neither recommended prompts nor recommended keywords. They had access to the AI tool but no suggestions or guidance on how to formulate their queries. This group serves as the baseline for comparison.
+
+Note: We removed subjects whose total session duration was below 7 minutes, as this suggested incomplete engagement with the study.
 
 ### Tutorial and Comprehension Check
 Subjects were first presented with a tutorial with videos demonstrating key features of ChatSSRN. The videos were rendered as GIFs on each tutorial page, and subjects were required to spend at least 15 seconds on each page. The tutorials were customized based on the assignment to the four treatment groups. The first tutorial page introduced the ChatSSRN interface. The second page demonstrated how users could click the reference to read the abstract from SSRN. The third tutorial page focused on the use of recommended prompts and keywords and was only visible to subjects who were assigned to the corresponding group. After the tutorial, subjects were given a comprehension check with two questions about ChatSSRN. Only upon passing the check were subjects able to continue with the rest of this online study.
@@ -62,10 +102,10 @@ These four groups are for Study I:
 
 -->
 ### Task Completion Behavior
-From user behavior data, we find that keywords significantly reduce people's likelihood to revise their answers to the second question. Further, people tend to spend longer time in gnerating their answers when keywords are provided for Task 2 but not for Task 1.  
+From user behavior data, we find that keywords significantly reduce people's likelihood to revise their answers to the second question ($\beta$=-0.1262, p<0.1). Further, people tend to spend longer time in generating their answers when keywords are provided for Task 2 but not for Task 1 ($\beta$=0.4519, p<0.1). As a result, they are also less likely to revise answers for Task 2. 
 
 
-### Table: Basic Behavior
+#### Table 1: Basic Behavior
 
 | Variable | revise1 | revise2 | Task 1→2 Duration | Task 2→3 Duration |
 |:---------|:--------:|:--------:|:------------------:|:-------------------:|
@@ -85,20 +125,20 @@ Task 1→2 Duration and Task 2→3 Duration are log-transformed.
 mygenAIfolder\Code\survey\conversation_prompts_sep5.csv
 -->
 ### Prompting Behavior
-We further analzyed users' prompting behavior and found that there is no significant differences among groups.
-### Table: Prompting Behavior
+We further analyzed users' prompting behavior and found that there are no significant differences among groups.
+#### Table 2: Prompting Behavior
 
 | Variable | Log(num_prompts) | Log(avg_prompt_words) |
 |:---------|:--------:|:--------:|
 | Prompt Treatment | -0.0129 (0.0881) | 0.0126 (0.0684) |
 | Keywords Treatment | -0.0403 (0.0880) | -0.0328 (0.0683) |
-| Privacy Knowledge (q1) | -0.0796† (0.0451) | 0.0116 (0.0350) |
+| Privacy Knowledge (q1) | -0.0796* (0.0451) | 0.0116 (0.0350) |
 | AI Usage Freq. (q12) | -0.0325 (0.0401) | 0.1509*** (0.0312) |
 | R-squared | 0.0288 | 0.1370 |
 | Adj R-squared | 0.0075 | 0.1180 |
 | N | 187 | 187 |
 
-**Note:** Standard errors in parentheses. *** p<0.001, ** p<0.01, * p<0.05, † p<0.10
+**Note:** Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.10
 
 Reference category: Group 4 (Control group)
 <!--
@@ -107,67 +147,111 @@ MyGenAIfolder\Responses\Alex_Information_Task1
 Now in analysis.
 -->
 
-### Deligation
+### Delegation
 
-In this analysis, we examine whether users' prompts are highly similar to the information task. This helps us to assess to what extant users delegate the problem to AI.
+In this analysis, we examine whether users' prompts are highly similar to the information task. This helps us to assess to what extent users delegate the problem to AI.
 
  
 
 ## Table: Prompt Alignment and Vocabulary Diversity
 
+We define $Prompt\ Alignment$ as the cosine similarity score between the user prompt and the task description, calculated using TF-IDF vectorization with English stop words removed. For tasks 1 and 2, similarity is computed directly against the respective task prompt. For task 3, the maximum similarity across both task 1 and task 2 prompts is used. We define $Average\ Word\ Entropy$ as the Shannon entropy of the word frequency distribution in the user prompt:
+
+$$H = -\sum_{i=1}^{n} p_i \log(p_i)$$
+
+where $p_i$ is the proportion of each unique word in the prompt. Higher entropy values indicate greater vocabulary diversity and less repetitive language use.
+
+We find from the results illustrated in Table 4 that subjects are less likely to delegate the task to AI (copying the Task as the prompt for the chatbot) when recommended keywords are available when they work on Task 1 ($\beta$=-0.0361, p<0.1) and when recommended prompts are available when they work on Task 2 ($\beta$=-0.0580, p<0.1). These findings highlight the different roles played by recommended keywords and prompts.
+
+On the side, we also find that subjects with more extensive AI experience tend to delegate the task to AI more (positive and significant coefficients for AI Usage Experience).
+
+#### Table 3: Prompting Behavior
+
 | Variable | Max Similarity Task 1 | Max Similarity Task 2 | Avg Word Entropy Task 1 | Avg Word Entropy Task 2 |
 |---|---|---|---|---|
-| Prompt Treatment | -0.0172<br/>(0.0198) | -0.0580†<br/>(0.0349) | 0.0095<br/>(0.0736) | 0.1050<br/>(0.1111) |
-| Keywords Treatment | -0.0361†<br/>(0.0200) | -0.0362<br/>(0.0344) | -0.0312<br/>(0.0743) | -0.1038<br/>(0.1095) |
+| Prompt Treatment | -0.0172<br/>(0.0198) | -0.0580*<br/>(0.0349) | 0.0095<br/>(0.0736) | 0.1050<br/>(0.1111) |
+| Keywords Treatment | -0.0361*<br/>(0.0200) | -0.0362<br/>(0.0344) | -0.0312<br/>(0.0743) | -0.1038<br/>(0.1095) |
 | Privacy Knowledge | 0.0164<br/>(0.0105) | 0.0020<br/>(0.0182) | -0.0336<br/>(0.0390) | 0.0242<br/>(0.0578) |
-| AI Usage Experience | 0.0150†<br/>(0.0089) | 0.0495**<br/>(0.0162) | 0.1406***<br/>(0.0331) | 0.1052*<br/>(0.0515) |
-| Number of Prompts | 0.0001<br/>(0.0020) | -0.0088*<br/>(0.0034) | -0.0133†<br/>(0.0075) | -0.0071<br/>(0.0109) |
+| AI Usage Experience | 0.0150*<br/>(0.0089) | 0.0495***<br/>(0.0162) | 0.1406***<br/>(0.0331) | 0.1052**<br/>(0.0515) |
+| Number of Prompts | 0.0001<br/>(0.0020) | -0.0088**<br/>(0.0034) | -0.0133*<br/>(0.0075) | -0.0071<br/>(0.0109) |
 | N | 159 | 151 | 159 | 151 |
 | R² | 0.0791 | 0.1324 | 0.1316 | 0.0551 |
 
 **Note:** Threshold >=8 minutes.
 
-**Note:** † p < 0.10, * p < 0.05, ** p < 0.01, *** p < 0.001. Values in parentheses are standard errors. Controls include privacy knowledge (q1_numeric), AI usage experience (q12_numeric), and number of prompts submitted (num_prompts). Prompt: Groups 1-2. Keywords: Groups 1,3. Control: Group 4.
+**Note:** Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.10.
+Values in parentheses are standard errors. Controls include privacy knowledge (q1_numeric), AI usage experience (q12_numeric), and number of prompts submitted (num_prompts). Prompt: Groups 1-2. Keywords: Groups 1,3. Control: Group 4.
 
 ### Task 1 - Information Retrieval Quality Metrics
 
-We also find that users presented with the prompt tool have a higher chance 
+In this analysis, we assess the quality of subjects' answers to the first Task, the information retrieval task. Our RA manually labeled all the papers submitted by the subjects. 
 
-### Table: Task 1 Evaluation
+
+**Number of Unique Papers** is the count of distinct papers (identified by unique SSRN IDs) that subjects submitted as part of their literature retrieval task answers. On average, a subject submits 9.86 papers.
+
+**NDCG (Normalized Discounted Cumulative Gain)** is a ranking quality metric that measures how well the submitted papers are ranked by relevance. It is calculated as:
+
+$$\text{NDCG} = \frac{\text{DCG}}{\text{IDCG}} = \frac{\sum_{i=1}^{k} \frac{\text{rel}_i}{\log_2(i+1)}}{\sum_{i=1}^{k} \frac{\text{rel}_{i,\text{ideal}}}{\log_2(i+1)}}$$
+
+where $\text{rel}_i$ is the relevance score of the paper at position $i$ (binary: 1 if relevant, 0 if not), and IDCG is the ideal DCG with all relevant papers ranked first. NDCG ranges from 0 to 1, with higher values indicating better ranking quality. The average NDCG is 0.891.
+
+With the number of unique papers and NDCG being the outcomes, we find that users presented with the prompt tool submit more unique papers ($\beta$=1.0899, p<0.1).
+
+On the side, subjects with more extensive AI experience submit a lower number of papers; they also correspond to a lower level of NDCG.
+
+#### Table 4: Task 1 Evaluation
 
 | Variable | Num Unique Papers | NDCG (Binary) |
 |:---------|:--------:|:--------:|
-| Prompt Treatment | 1.0899† (0.6294) | -0.0238 (0.0388) |
+| Prompt Treatment | 1.0899* (0.6294) | -0.0238 (0.0388) |
 | Keywords Treatment | -0.0065 (0.6286) | -0.0374 (0.0387) |
 | Privacy Knowledge (q1) | -0.0498 (0.3206) | -0.0105 (0.0198) |
-| AI Usage Freq. (q12) | -0.9264** (0.2878) | -0.0454* (0.0177) |
+| AI Usage Exp. (q12) | -0.9264*** (0.2878) | -0.0454** (0.0177) |
 | R-squared | 0.0774 | 0.0494 |
 | N | 186 | 186 |
 
-**Note:** Standard errors in parentheses. *** p<0.001, ** p<0.01, * p<0.05, † p<0.10
+**Note:** Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.10.
 
 Relevance recoded as binary (2=relevant, 1,0=not relevant)
 
 
 ### Task 2 - Speech Quality
 
- 
+ We further assess the quality of answers to Task 2, the generative task. We employed OpenAI's GPT-4 as an expert evaluator to assess the quality of subjects' Task 2 speeches (preparing a speech on "Privacy Legislations") across three dimensions: **Novelty**, **Relevance**, and **Salience**. Instead of asking LLM to evaluate responses one by one, we ask LLM to evaluate a group of 5 randomly chosen responses. We perform 5 rounds of evaluation to make sure that speeches are compared to other speeches sufficiently. We then aggregated the evaluation scores.
 
-## Table: Task 2 Evaluation
+ 
+#### Three Evaluation Dimensions (1-5 Scale)
+
+1. **Novelty:** Measures how original and innovative the ideas presented are. Do they offer new perspectives on privacy legislation?
+   - Range: 1 (not at all original) to 5 (very original)
+   - Mean: 3.25 (SD = 0.91)
+
+2. **Relevance:** Measures how well the speech addresses the topic of privacy legislations. Are the bullet points directly related?
+   - Range: 1 (not relevant at all) to 5 (highly relevant)
+   - Mean: 4.49 (SD = 0.86)
+
+3. **Salience:** Measures how important and timely are the issues discussed. Do they matter to current debates?
+   - Range: 1 (not important) to 5 (very important)
+   - Mean: 4.09 (SD = 0.89)
+
+
+We then use these three dimensions as outcomes of our interest. As we report in Table 5, the recommended prompts significantly increase the novelty and relevance of answers ($\beta$=0.2431, p<0.05 for novelty and $\beta$=0.1778, p<0.1 for relevance). However, recommended keywords do not play such a role. In the meantime, AI experience seems to correspond to greater novelty and relevance for all subjects.
+
+#### Table 5: Task 2 Evaluation
 
 | Variable | Novelty | Relevance | Salience |
 |----------|---------|-----------|----------|
-| Prompt Treatment | 0.2431* | 0.1778† | 0.1431 |
+| Prompt Treatment | 0.2431** | 0.1778* | 0.1431 |
 | | (0.1003) | (0.1076) | (0.1076) |
 | Keywords Treatment | -0.0283 | -0.0051 | -0.0439 |
 | | (0.1002) | (0.1075) | (0.1075) |
 | Privacy Knowledge | -0.0494 | -0.0368 | -0.0593 |
 | | (0.0510) | (0.0547) | (0.0547) |
-| AI Experience | 0.0915* | 0.0872† | 0.0735 |
+| AI Experience | 0.0915** | 0.0872* | 0.0735 |
 | | (0.0459) | (0.0492) | (0.0492) |
 | **N** | 189 | 189 | 189 |
 
-**Note:** Significance levels: ***p<0.001, **p<0.01, *p<0.05, †p<0.10
+**Note:** Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.10.
 
 **Outcomes:**
 - **Novelty:** How original and innovative are the ideas presented (1-5 scale)
