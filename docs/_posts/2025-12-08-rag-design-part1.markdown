@@ -147,10 +147,10 @@ We further analyzed users' prompting behavior and found that there are no signif
 | AI Usage Freq. (q12) | -0.0325 (0.0401) | 0.1509*** (0.0312) |
 | R-squared | 0.0288 | 0.1370 |
 | Adj R-squared | 0.0075 | 0.1180 |
-| N | 187 | 187 |
+| N | 189 | 189 |
 
 **Note:** Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.10
-
+(effective N=187)
 Reference category: Group 4 (Control group)
 <!--
 MyGenAIfolder\Responses\Alex_Information_Task1
@@ -166,13 +166,13 @@ In this analysis, we examine whether users' prompts are highly similar to the in
 
 ## Table: Prompt Alignment and Vocabulary Diversity
 
-We define $Prompt\ Alignment$ as the cosine similarity score between the user prompt and the task description, calculated using TF-IDF vectorization with English stop words removed. For tasks 1 and 2, similarity is computed directly against the respective task prompt. For task 3, the maximum similarity across both task 1 and task 2 prompts is used. We define $Average\ Word\ Entropy$ as the Shannon entropy of the word frequency distribution in the user prompt:
+We define $Prompt\ Alignment$ as the cosine similarity score between the user prompt and the task description, calculated using TF-IDF vectorization with English stop words removed. For tasks 1 and 2, similarity is computed directly against the respective task prompt.  We define $Average\ Word\ Entropy$ as the Shannon entropy of the word frequency distribution in the user prompt:
 
 $$H = -\sum_{i=1}^{n} p_i \log(p_i)$$
 
 where $p_i$ is the proportion of each unique word in the prompt. Higher entropy values indicate greater vocabulary diversity and less repetitive language use.
 
-We find from the results illustrated in Table 4 that subjects are less likely to delegate the task to AI (copying the Task as the prompt for the chatbot) when recommended keywords are available when they work on Task 1 ($\beta$=-0.0361, p<0.1) and when recommended prompts are available when they work on Task 2 ($\beta$=-0.0580, p<0.1). These findings highlight the different roles played by recommended keywords and prompts.
+We find from the results illustrated in Table 4 that subjects are less likely to delegate the task to AI (copying the Task as the prompt for the chatbot) when recommended keywords are available when they work on Task 1 ($\beta$=-0.0334, p<0.1). We also find that with recommended prompts, users' word diversity increases when completing Task 2 ($\beta$=0.1688, p<0.1) These findings highlight the different roles played by recommended keywords and prompts.
 
 On the side, we also find that subjects with more extensive AI experience tend to delegate the task to AI more (positive and significant coefficients for AI Usage Experience).
 
@@ -180,15 +180,15 @@ On the side, we also find that subjects with more extensive AI experience tend t
 
 | Variable | Max Similarity Task 1 | Max Similarity Task 2 | Avg Word Entropy Task 1 | Avg Word Entropy Task 2 |
 |---|---|---|---|---|
-| Prompt Treatment | -0.0172<br/>(0.0198) | -0.0580*<br/>(0.0349) | 0.0095<br/>(0.0736) | 0.1050<br/>(0.1111) |
-| Keywords Treatment | -0.0361*<br/>(0.0200) | -0.0362<br/>(0.0344) | -0.0312<br/>(0.0743) | -0.1038<br/>(0.1095) |
-| Privacy Knowledge | 0.0164<br/>(0.0105) | 0.0020<br/>(0.0182) | -0.0336<br/>(0.0390) | 0.0242<br/>(0.0578) |
-| AI Usage Experience | 0.0150*<br/>(0.0089) | 0.0495***<br/>(0.0162) | 0.1406***<br/>(0.0331) | 0.1052**<br/>(0.0515) |
-| Number of Prompts | 0.0001<br/>(0.0020) | -0.0088**<br/>(0.0034) | -0.0133*<br/>(0.0075) | -0.0071<br/>(0.0109) |
-| N | 159 | 151 | 159 | 151 |
-| R² | 0.0791 | 0.1324 | 0.1316 | 0.0551 |
+| Prompt Treatment | -0.0093<br/>(0.0174) | -0.0288<br/>(0.0293) | 0.0185<br/>(0.0644) | 0.1688*<br/>(0.0929) |
+| Keywords Treatment | -0.0334*<br/>(0.0174) | -0.0264<br/>(0.0293) | -0.0183<br/>(0.0644) | -0.0750<br/>(0.0929) |
+| Privacy Knowledge | 0.0169*<br/>(0.0091) | 0.0088<br/>(0.0153) | -0.0294<br/>(0.0337) | 0.0344<br/>(0.0486) |
+| AI Usage Experience | 0.0162**<br/>(0.0079) | 0.0400***<br/>(0.0134) | 0.1299***<br/>(0.0293) | 0.1082**<br/>(0.0423) |
+| Number of Prompts | -0.0002<br/>(0.0018) | -0.0081***<br/>(0.0030) | -0.0146**<br/>(0.0066) | -0.0048<br/>(0.0095) |
+| N | 189 | 189 | 189 | 189 |
+| R² | 0.0855 | 0.1152 | 0.1263 | 0.0748 |
 
-**Note:** Threshold >=8 minutes.
+(Effective N=189)
 
 **Note:** Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.10.
 Values in parentheses are standard errors. Controls include privacy knowledge (q1_numeric), AI usage experience (q12_numeric), and number of prompts submitted (num_prompts). Prompt: Groups 1-2. Keywords: Groups 1,3. Control: Group 4.
@@ -219,10 +219,11 @@ On the side, subjects with more extensive AI experience submit a lower number of
 | Privacy Knowledge (q1) | -0.0498 (0.3206) | -0.0105 (0.0198) |
 | AI Usage Exp. (q12) | -0.9264*** (0.2878) | -0.0454** (0.0177) |
 | R-squared | 0.0774 | 0.0494 |
-| N | 186 | 186 |
+| N | 189 | 189 |
 
 **Note:** Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.10.
 
+(Effective N=186)
 Relevance recoded as binary (2=relevant, 1,0=not relevant)
 
 
