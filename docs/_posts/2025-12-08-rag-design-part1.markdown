@@ -4,6 +4,17 @@ title:  "Recommended Prompts and Keywords in Retrieval-Augmented Generation Syst
 date:   2025-12-08 14:34:15 -0600
 categories: hci
 ---
+<!-- MathJax configuration -->
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+
+<!-- MathJax CDN -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
 
 ## Motivation
 
