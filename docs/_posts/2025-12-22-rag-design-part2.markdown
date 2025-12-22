@@ -84,16 +84,16 @@ B. In two experimental markets (twin markets), which kind of arbitrage bot gener
 
 ### Workflow
 
-![alt text](2025-12-22-rag-design-part2/exp-pre.png)
+![alt text](/2025-12-22-rag-design-part2/exp-pre.png)
 
-![alt text](2025-12-22-rag-design-part2/exp-task.png)
+![alt text](/2025-12-22-rag-design-part2/exp-task.png)
 
-![alt text](2025-12-22-rag-design-part2/exp-post.png)
+![alt text](/2025-12-22-rag-design-part2/exp-post.png)
 ## Results
 
 ### User Satisfaction
 
-![alt text](2025-12-22-rag-design-part2/satisfaction.png)
+![alt text](/2025-12-22-rag-design-part2/satisfaction.png)
 
 We compared user satisfaction ratings across interface groups using independent samples t-tests against the control (AI baseline) group:
 
@@ -107,7 +107,7 @@ The Search interface significantly increased user satisfaction compared to the c
 
 ### Task Performance (Grades)
 
-![alt text](2025-12-22-rag-design-part2/grades.png)
+![alt text](/2025-12-22-rag-design-part2/grades.png)
 
 We compared task performance (grades) across interface groups using independent samples t-tests against the control (AI baseline) group:
 
@@ -121,7 +121,7 @@ The Search interface showed significantly better task performance compared to th
 
 ### Unknown Percentage Analysis
 
-![alt text](2025-12-22-rag-design-part2/unknown_percentage.png)
+![alt text](/2025-12-22-rag-design-part2/unknown_percentage.png)
 
 We conducted independent samples t-tests comparing the unknown percentage across different interface groups against the control (AI baseline) group. The results show:
 
