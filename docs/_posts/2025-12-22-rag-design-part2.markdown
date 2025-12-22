@@ -1,30 +1,25 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2025-12-02 14:34:15 -0600
-categories: jekyll update
-published: false
+title:  "Search vs. Chatbot"
+date:   2025-12-22 14:34:15 -0600
+categories: AI
+published: true
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+<!-- MathJax configuration -->
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+  svg: { fontCache: 'global' }
+};
+</script>
 
-Jekyll requires blog post files to be named according to the following format:
+<!-- MathJax CDN -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
 
-`YEAR-MONTH-DAY-title.MARKUP`
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+## Motivation
 
-Jekyll also offers powerful support for code snippets:
+AI is changing the landscape of information retrieval, and many say AI will replace traditional search engines. In this article, I report on a study conducted by my co-authors [Amit Basu][Amit], [Jingjing Zhang][jingjing], and me, which compares an AI chatbot with a search engine. With a controlled information retrieval setup, we ensured that the underlying knowledge base and the retriever were identical. This design attributes any differences in user behavior and task completion quality to the interface—AI chatbot versus search engine.
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+[Amit]: https://www.smu.edu/cox/academics/faculty/amit-basu  
+[jingjing]: https://kelley.iu.edu/faculty-research/faculty-directory/profile.html?id=JJZHANG
