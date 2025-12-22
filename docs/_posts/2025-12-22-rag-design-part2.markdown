@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Search vs. Chatbot"
-date:   2025-12-22 14:34:15 -0600
+date:   2025-12-21 14:34:15 -0600
 categories: AI
 published: true
 ---
