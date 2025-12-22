@@ -29,13 +29,13 @@ AI is changing the landscape of information retrieval, and many say AI will repl
 We define four versions of information retrieval tools:
 
 AI (baseline)
-![alt text](/2025-12-22-rag-design-part2/tutorial-base.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/tutorial-base.png)
 AI-Keywords
-![alt text](/2025-12-22-rag-design-part2/tutorial-keywords.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/tutorial-keywords.png)
 AI-Topic
-![alt text](/2025-12-22-rag-design-part2/exp-topic.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/exp-topic.png)
 Search
-![alt text](/2025-12-22-rag-design-part2/exp-tutorial-search.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/exp-tutorial-search.png)
 ### Information Task Design
 
 We first conducted a pilot study to gather all papers related to algorithmic trading. Specifically, we recruited ~120 student subjects, and asked each student subject to explore four topics related to algorithmic trading. For each topic, they will need to submit SSRN papers related to the topic. This gives us a set of 133 papers, most of which are related to algorithmic trading. We then hired an RA to rate each paper based on its relevance to algorithmic trading. Then, an experimentalist examined all relevant papers, and came up with four sets of questions with multiple answers. This four set of eight questions were reviewed by a finance professor and one set (two questions) were removed. 
@@ -84,16 +84,16 @@ B. In two experimental markets (twin markets), which kind of arbitrage bot gener
 
 ### Workflow
 
-![alt text](/2025-12-22-rag-design-part2/exp-pre.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/exp-pre.png)
 
-![alt text](/2025-12-22-rag-design-part2/exp-task.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/exp-task.png)
 
-![alt text](/2025-12-22-rag-design-part2/exp-post.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/exp-post.png)
 ## Results
 
 ### User Satisfaction
 
-![alt text](/2025-12-22-rag-design-part2/satisfaction.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/satisfaction.png)
 
 We compared user satisfaction ratings across interface groups using independent samples t-tests against the control (AI baseline) group:
 
@@ -107,7 +107,7 @@ The Search interface significantly increased user satisfaction compared to the c
 
 ### Task Performance (Grades)
 
-![alt text](/2025-12-22-rag-design-part2/grades.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/grades.png)
 
 We compared task performance (grades) across interface groups using independent samples t-tests against the control (AI baseline) group:
 
@@ -121,7 +121,7 @@ The Search interface showed significantly better task performance compared to th
 
 ### Unknown Percentage Analysis
 
-![alt text](/2025-12-22-rag-design-part2/unknown_percentage.png)
+![alt text]({{ site.baseurl }}/assets/images/2025-12-22-rag-design-part2/unknown_percentage.png)
 
 We conducted independent samples t-tests comparing the unknown percentage across different interface groups against the control (AI baseline) group. The results show:
 
