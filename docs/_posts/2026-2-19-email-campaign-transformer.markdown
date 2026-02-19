@@ -10,7 +10,7 @@ published: true
 
 # Multi-Task Learning for Email Campaign Performance Prediction
 
-Predicting whether customers will open, click, or convert from a single email campaign is a challenging multi-faceted problem. In this post, we present a novel multi-task learning approach that simultaneously predicts all three outcomes using a shared neural architecture enhanced with contrastive learning.
+Predicting whether customers will open, click, or convert from a single email campaign is a challenging multi-faceted problem. In this post, Hillol Bala, Paul Kang, and Mijalche Santa and I present a novel multi-task learning approach that simultaneously predicts all three outcomes using a shared neural architecture enhanced with contrastive learning.
 
 ## 1. Motivation: Campaign Performance Data
 
