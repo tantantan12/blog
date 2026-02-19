@@ -217,32 +217,37 @@ This is our novel contribution—we enhanced campaign embeddings with semantic i
 
 ### 3.5 Three Outcomes Overview
 
+**Note on Data Stages**: The original dataset contained 82,547 customer-email records with positive rates of 31.68% (Opens), 2.65% (Clicks), and 0.77% (Conversions). After data assembly with embeddings and train/val/test splits, the 468,008 records maintain similar proportions (33%, 3%, 0.97% respectively).
+
 **Opens (Primary Task - Well-balanced)**
 - Binary label: 1 if email was opened, 0 otherwise
-- Positive rate: 33%
+- Positive rate: **33%** (154,643 out of 468,008 records)
 - Predictability: Good (emails reach inbox, subject/sender matter)
 - Business impact: Critical for engagement funnel
+- Model recall: **80.11%**
 
 **Clicks (Secondary Task - Imbalanced)**
 - Binary label: 1 if link was clicked, 0 otherwise
-- Positive rate: 6%
+- Positive rate: **3%** (14,040 out of 468,008 records)
 - Predictability: Moderate (depends on content, design, CTA placement)
 - Business impact: Indicates strong engagement and interest
-- Challenge: Severe class imbalance (94% negative samples)
+- Challenge: Severe class imbalance (97% negative samples)
+- Model recall: **81.06%** (exceptional for 3% baseline)
 
 **Conversions (Tertiary Task - Severely Imbalanced)**
 - Binary label: 1 if purchase/desired action completed, 0 otherwise
-- Positive rate: 1%
+- Positive rate: **0.97%** (4,539 out of 468,008 records)
 - Predictability: Difficult (multi-step process, external factors)
 - Business impact: Direct revenue impact
 - Challenge: Extreme class imbalance (99% negative samples)
+- Model recall: **83.33%** (remarkable for 0.97% baseline)
 
 **Correlation Structure**:
 ```
-Opens (33%) ⊃ Clicks (6%) ⊃ Conversions (1%)
+Opens (33%) ⊃ Clicks (3%) ⊃ Conversions (0.97%)
 ```
 
-Most conversions come from clicks, most clicks come from opens. This hierarchical structure is naturally captured by the shared encoder.
+Most conversions come from clicks, most clicks come from opens. This hierarchical structure is naturally captured by the shared encoder, and model recall improves as we move down the hierarchy despite increasing class imbalance.
 
 ---
 
@@ -365,7 +370,7 @@ Three key visualizations generated:
 
 #### ROC Curves - All Three Tasks
 
-![ROC Curves](roc_curves.png)
+![ROC Curves](2026-2-19-email-campaign-transformer/roc_curves.png)
 
 The ROC curves demonstrate outstanding discrimination ability:
 - **Opens (red)**: ROC-AUC 0.9784 - nearly perfect separation between openers and non-openers
@@ -376,7 +381,7 @@ The curves' distance from the diagonal (random classifier) shows the model's str
 
 #### Precision-Recall Curves - All Three Tasks
 
-![Precision-Recall Curves](pr_curves.png)
+![Precision-Recall Curves](2026-2-19-email-campaign-transformer/pr_curves.png)
 
 The Precision-Recall (PR) curves highlight the model's effectiveness with imbalanced data:
 - **Opens**: Maintains high precision (>90%) across a wide range of recall values
