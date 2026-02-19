@@ -6,6 +6,8 @@ categories: AI Machine-Learning
 published: true
 ---
 
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 # Multi-Task Learning for Email Campaign Performance Prediction
 
 Predicting whether customers will open, click, or convert from a single email campaign is a challenging multi-faceted problem. In this post, we present a novel multi-task learning approach that simultaneously predicts all three outcomes using a shared neural architecture enhanced with contrastive learning.
