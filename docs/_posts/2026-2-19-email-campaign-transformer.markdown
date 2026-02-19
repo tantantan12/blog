@@ -158,7 +158,7 @@ This is our novel contribution—we enhanced campaign embeddings with semantic i
    - Process: Summarized content, then embedded
    - Captures: Message tone, brand voice, offer details
 
-2. **Subject Line Embedding (1,536 dim)** ⭐ NEW
+2. **Subject Line Embedding (1,536 dim)**  
    - Tool: OpenAI embeddings API
    - Input: Email subject line only
    - Captures: Subject effectiveness, psychology, urgency indicators
