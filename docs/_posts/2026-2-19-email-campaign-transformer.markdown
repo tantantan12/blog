@@ -370,8 +370,10 @@ Three key visualizations generated:
 
 #### ROC Curves - All Three Tasks
  
+
 ![ROC Curves]({{ site.baseurl }}/assets/images/2026-2-19-email-campaign-transformer/roc_curves.png)
 
+ 
 The ROC curves demonstrate outstanding discrimination ability:
 - **Opens (red)**: ROC-AUC 0.9784 - nearly perfect separation between openers and non-openers
 - **Clicks (blue)**: ROC-AUC 0.9878 - excellent performance despite 2.65% positive rate
@@ -381,8 +383,11 @@ The curves' distance from the diagonal (random classifier) shows the model's str
 
 #### Precision-Recall Curves - All Three Tasks
 
+ 
+
 ![Precision-Recall Curves]({{ site.baseurl }}/assets/images/2026-2-19-email-campaign-transformer/pr_curves.png)
 
+ 
 The Precision-Recall (PR) curves highlight the model's effectiveness with imbalanced data:
 - **Opens**: Maintains high precision (>90%) across a wide range of recall values
 - **Clicks**: Achieves high precision (>95%) even at 80%+ recall - impressive for 2.65% baseline
